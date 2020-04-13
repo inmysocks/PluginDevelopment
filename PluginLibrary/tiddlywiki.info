@@ -1,0 +1,42 @@
+{
+    "description": "An Example Custom Plugin Library",
+    "plugins": [
+        "tiddlywiki/pluginlibrary"
+    ],
+    "themes": [],
+    "build": {
+        "library": [
+            "--makelibrary",
+            "$:/UpgradeLibrary",
+            "--savelibrarytiddlers",
+            "$:/UpgradeLibrary",
+            "[prefix[$:/]] -[[$:/plugins/tiddlywiki/upgrade]] -[[$:/plugins/tiddlywiki/translators]] -[[$:/plugins/tiddlywiki/pluginlibrary]] -[[$:/plugins/tiddlywiki/jasmine]]",
+            "recipes/library/tiddlers/",
+            "$:/UpgradeLibrary/List",
+            "--savetiddler",
+            "$:/UpgradeLibrary/List",
+            "recipes/library/tiddlers.json",
+            "--rendertiddler",
+            "$:/plugins/tiddlywiki/pluginlibrary/library.template.html",
+            "index.html",
+            "text/plain"
+        ],
+        "mylibrary": [
+            "--makelibrary",
+            "$:/MyLibrary",
+            "--savelibrarytiddlers",
+            "$:/MyLibrary",
+            "[prefix[$:/]] -[prefix[$:/plugins/tiddlywiki/]] -[prefix[$:/themes/tiddlywiki/]] -[prefix[$:/languages/]]",
+            "recipes/library/tiddlers/",
+            "$:/MyLibrary/List",
+            "recipes/library/tiddlers.json",
+            "--savetiddler",
+            "$:/MyLibrary/List",
+            "recipes/library/tiddlers.json",
+            "--rendertiddler",
+            "$:/plugins/tiddlywiki/pluginlibrary/library.template.html",
+            "index.html",
+            "text/plain"
+        ]
+    }
+}
