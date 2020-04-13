@@ -11,10 +11,10 @@ If you move your plugin development folder you must re-run this script.
 "
 
 if [ ! -f ./TiddlyWiki5/tiddlywiki.js ]; then
-  echo "Initialising the TiddlyWiki5 git repository"
-  git submodule update --init --recursive
-  echo "Finished initalising submodule"
-  echo "Checking out latest release"
+  #echo "Initialising the TiddlyWiki5 git repository"
+  #git submodule update --init --recursive
+  #echo "Finished initalising submodule"
+  echo "Checking out latest release of tiddlywiki5"
   cd TiddlyWiki5
   #git fetch -t
   TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
@@ -47,6 +47,9 @@ if [ 0 ]; then
     cd ..
   fi
 fi
+
+echo "Patching tiddlywiki to work with this version of the plugin library
+creator."
 
 ./PatchMakeLibrary.sh
 

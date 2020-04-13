@@ -16,8 +16,9 @@ It has a few components:
 
 ## Setup
 
-1. Clone this repo
-2. Run `Setup.sh`
+1. Clone this repo using `git clone --recurse-submodules https://github.com/inmysocks/PluginDevelopment.git`
+2. Go into the PluginDevelopment folder `cd PluginDevelopment`
+2. Run `./Setup.sh`
 
 ## Using this
 
