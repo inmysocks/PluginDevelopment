@@ -17,3 +17,5 @@ if [ $2 ]; then
 fi
 
 node ./TiddlyWiki5/tiddlywiki.js ./Wikis/$NAME --init $EDITION
+
+echo "New wiki created in $(pwd)/Wikis/$Name using $EDITION edition"

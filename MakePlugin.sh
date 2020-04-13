@@ -44,3 +44,5 @@ echo "title: \$:/plugins/$AUTHOR/$PLUGINNAME/readme
 caption: readme
 
 Readme text goes here." > $PLUGINFOLDER/$AUTHOR/$PLUGINNAME/readme.tid
+
+echo "New empty plugin created in $PLUGINFOLDER/$AUTHOR/$PLUGINNAME."

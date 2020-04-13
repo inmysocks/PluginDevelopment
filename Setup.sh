@@ -10,43 +10,39 @@ Run this script to help setup your development environment for tiddlywiki 5.
 If you move your plugin development folder you must re-run this script.
 "
 
-if [ ! -f ./TiddlyWiki5/tiddlywiki.js ]; then
-  #echo "Initialising the TiddlyWiki5 git repository"
-  #git submodule update --init --recursive
-  #echo "Finished initalising submodule"
+if [ ! -f ./TiddlyWikiVersion.txt ]; then
   echo "Checking out latest release of tiddlywiki5"
   cd TiddlyWiki5
-  #git fetch -t
   TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
   git checkout $TAG
   cd ..
   echo "Finished checking out latest release"
 fi
 
-# Updating tiddlywiki versions will be added later
-if [ 0 ]; then
-  CURRTAG=$(git describe --abbrev=0)
-  NEWESTTAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-  echo "There may be a new version of tiddlywiki available, do you want to get
-  it?"
-  echo "Warning: If you have modified the core this will overwrite your
-  changes!!!"
-  echo "Do you wish to install this program?"
-  select yn in "Yes" "No"; do
-    case $yn in
-      Yes ) UPDATE="yes"; break;;
-      No ) UPDATE="no"; break;;
-    esac
-  done
-  if [ $UPDATE ]; then
-    cd TiddlyWiki5
-    git reset --hard
-    git pull
-    TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-    git checkout $TAG
-    cd ..
-  fi
-fi
+#cd TiddlyWiki5
+#CURRENTTAG=$(<./TiddlyWikiVersion.txt)
+#NEWESTTAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+#if [ $CURRENTTAG != $NEWESTTAG ]; then
+#  echo "There may be a new version of tiddlywiki available, do you want to get
+#  it?"
+#  echo "Warning: If you have modified the core this will overwrite your
+#  changes!!!"
+#  echo "Do you wish to install this program?"
+#  select yn in "Yes" "No"; do
+#    case $yn in
+#      Yes ) UPDATE="yes"; break;;
+#      No ) UPDATE="no"; break;;
+#    esac
+#  done
+#  if [ $UPDATE ]; then
+#    cd TiddlyWiki5
+#    git reset --hard
+#    git pull
+#    TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+#    git checkout $TAG
+#    cd ..
+#  fi
+#fi
 
 echo "Patching tiddlywiki to work with this version of the plugin library
 creator."
