@@ -23,6 +23,7 @@ if [ ! -f ./TiddlyWiki5/tiddlywiki.js ]; then
   echo "Finished checking out latest release"
 fi
 
+# Updating tiddlywiki versions will be added later
 if [ 0 ]; then
   CURRTAG=$(git describe --abbrev=0)
   NEWESTTAG=$(git describe --tags `git rev-list --tags --max-count=1`)
@@ -46,6 +47,8 @@ if [ 0 ]; then
     cd ..
   fi
 fi
+
+./PatchMakeLibrary.sh
 
 echo "
 Enter the author name, this will be used as the author name for plugins you

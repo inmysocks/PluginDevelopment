@@ -33,3 +33,12 @@ edit the plugin to do whatever it is you want it to do, then you run
 
 The file `./PluginLibrary/tiddlywiki.info` is a normal tiddlywiki.info file
 with the arguments in the build command to create a plugin library.
+
+The filter
+
+`[prefix[$:/]] -[prefix[$:/plugins/tiddlywiki/]] -[prefix[$:/themes/tiddlywiki/]] -[prefix[$:/languages/]]`
+
+on line 29 determines which plugins are added to the plugin library created.
+It adds everything other than the core plugins and any languages.
+If you want to add languages using this you have to modify this filter to
+either allow all languages or add on the language(s) individually.
