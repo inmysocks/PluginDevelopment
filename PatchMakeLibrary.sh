@@ -11,6 +11,6 @@ NEW3="var languagesPaths = \$tw.getLibraryItemSearchPaths(\$tw.config.languagesP
 
 echo "s/$ORIGINAL1/$NEW1/g"
 
-sed -i "s/$ORIGINAL1/$NEW1/g" ./TiddlyWiki5/core/modules/commands/makelibrary.js
-sed -i "s/$ORIGINAL2/$NEW2/g" ./TiddlyWiki5/core/modules/commands/makelibrary.js
-sed -i "s/$ORIGINAL3/$NEW3/g" ./TiddlyWiki5/core/modules/commands/makelibrary.js
+sed -i "" "s/$ORIGINAL1/$NEW1/g" ./TiddlyWiki5/core/modules/commands/makelibrary.js
+sed -i "" "s/$ORIGINAL2/$NEW2/g" ./TiddlyWiki5/core/modules/commands/makelibrary.js
+sed -i "" "s/$ORIGINAL3/$NEW3/g" ./TiddlyWiki5/core/modules/commands/makelibrary.js
