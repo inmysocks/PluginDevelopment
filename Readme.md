@@ -22,11 +22,77 @@ It has a few components:
 
 ## Using this
 
-To use this you first run `MakePlugin.sh` to create an empty plugin, then you
-edit the plugin to do whatever it is you want it to do, then you run
-`MakePluginLibrary.sh` which will create the plugin library in the folder
-`./PluginLibrary/output`.
+### Making a plugin
 
+```
+./MakePlugin.sh PluginName
+```
+
+To initialise a plugin run the script `MakePlugin.sh`, it will create a plugin
+in the folder `./Plugins/PluginAuthor/PluginName`, where the author name is the
+name given during setup and the plugin name is the name given to the command.
+
+If for some reason you want to use a different author name for a plugin and
+don't want to change the default name you can give the author name as the
+second argument.
+
+```
+./MakePlugin.sh PluginName DifferentAuthorName
+```
+
+If you do this the plugin will be created in the folder `./Plugins/DifferentAuthorName/PluginName`.
+
+This also creates a wiki that using the server edition that has your plugin as
+a place where you can test and document it. The wiki is located in the folder
+`./Wikis/PluginAuthor/PluginName`, to start the wiki run `./start PluginName`
+and it will start the wiki server on the default port `8080`.
+
+If you want to use a different port you can give it as the second argument like
+this:
+
+```
+./start PluginAuthor/PluginName 8181
+```
+
+where you can change 8181 to whatever port you wish to use.
+
+Remember that changes made to the plugin will not update in the wiki unless you
+stop the server and restart it.
+
+### Making a plugin library
+
+To make a plugin library use the script `MakePluginLibrary.sh` which will
+create the plugin library in the folder `./PluginLibrary/output`.
+
+TODO add notes about how to host the plugin library.
+
+Short version, if you have a webhost that can host static files you can just
+copy the contents of the `PluginLibrary/output` folder into a folder on your
+host and then the url for the library will be whatever the url for that folder
+on your host is.
+
+TODO add information about how to make a plugin library tiddler
+
+### Making wikis
+
+If you want to make a wiki without a plugin you can use the `./MakeWiki.sh`
+script.
+
+Typing
+
+```
+./MakeWiki.sh wikiName
+```
+
+will make a wiki is the `./Wikis/wikiName` folder using the empty edition.
+
+If you want to use another edition you can give it as the second argument:
+
+```
+./MakeWiki.sh wikiName server
+```
+
+will make a wiki called `wikiName` using the `server` edition.
 
 # Other Information
 
