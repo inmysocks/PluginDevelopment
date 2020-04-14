@@ -79,6 +79,9 @@ fi
 if [ ! -d ./Languages ]; then
   mkdir ./Languages
 fi
+if [ ! -d ./Wikis ]; then
+  mkdir ./Wikis
+fi
 
 echo "$CURRENTFOLDER/Plugins" > ./PluginFolder.txt
 echo "$CURRENTFOLDER/Themes" > ./ThemeFolder.txt
