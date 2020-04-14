@@ -17,6 +17,7 @@ if [ ! -f ./TiddlyWikiVersion.txt ]; then
   git checkout $TAG
   cd ..
   echo "Finished checking out latest release"
+  echo $TAG > ./TiddlyWikiVersion.txt
 fi
 
 #cd TiddlyWiki5
@@ -56,7 +57,7 @@ Author.txt
 "
 
 CURRENTNAME="DEFAULTAUTHOR"
-CURRENTFOLDER=$(pwd)
+CURRENTFOLDER="$(pwd)"
 
 if [ -f ./Author.txt ]; then
   CURRENTNAME=$(<./Author.txt)
@@ -65,7 +66,7 @@ fi
 echo "Author Name (press enter to leave as $CURRENTNAME):"
 read AUTHORNAME
 
-if [ $AUTHORNAME ]; then
+if [ "$AUTHORNAME" ]; then
   echo $AUTHORNAME > Author.txt
 fi
 

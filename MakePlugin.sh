@@ -14,19 +14,19 @@ AUTHOR=$(<./Author.txt)
 PLUGINNAME="DemoPlugin"
 PLUGINFOLDER=$(<PluginFolder.txt)
 
-if [ $1 ]; then
+if [ "$1" ]; then
   PLUGINNAME=$1
 fi
 
-if [ $2 ]; then
+if [ "$2" ]; then
   AUTHOR=$2
 fi
 
-if [ -d $PLUGINFOLDER/$AUTHOR ]; then
-  mkdir $PLUGINFOLDER/$AUTHOR/$PLUGINNAME
+if [ -d "$PLUGINFOLDER/$AUTHOR" ]; then
+  mkdir "$PLUGINFOLDER/$AUTHOR/$PLUGINNAME"
 else
-  mkdir $PLUGINFOLDER/$AUTHOR
-  mkdir $PLUGINFOLDER/$AUTHOR/$PLUGINNAME
+  mkdir "$PLUGINFOLDER/$AUTHOR"
+  mkdir "$PLUGINFOLDER/$AUTHOR/$PLUGINNAME"
 fi
 
 echo "{
@@ -38,11 +38,11 @@ echo "{
   \"source\": \"\",
   \"list\": \"readme\",
   \"plugin-type\": \"plugin\"
-}" > $PLUGINFOLDER/$AUTHOR/$PLUGINNAME/plugin.info
+}" > "$PLUGINFOLDER/$AUTHOR/$PLUGINNAME/plugin.info"
 
 echo "title: \$:/plugins/$AUTHOR/$PLUGINNAME/readme
 caption: readme
 
-Readme text goes here." > $PLUGINFOLDER/$AUTHOR/$PLUGINNAME/readme.tid
+Readme text goes here." > "$PLUGINFOLDER/$AUTHOR/$PLUGINNAME/readme.tid"
 
 echo "New empty plugin created in $PLUGINFOLDER/$AUTHOR/$PLUGINNAME."
