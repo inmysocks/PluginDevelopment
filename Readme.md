@@ -14,6 +14,10 @@ It has a few components:
 5. A script that you can use to create a plugin library with the plugins you
   have created.
 
+If there is a new version of tiddlywiki available run `Setup.sh` again and it
+will ask if you wish to update tiddlywiki or not, press `1` for yes or `2` for
+no.
+
 ## Setup
 
 1. Clone this repo using `git clone --recurse-submodules https://github.com/inmysocks/PluginDevelopment.git`
