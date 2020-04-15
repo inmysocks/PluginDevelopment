@@ -13,6 +13,7 @@ It has a few components:
 4. A script to create new wikis that you can use to test plugins.
 5. A script that you can use to create a plugin library with the plugins you
   have created.
+6. A script to add plugins to the wikis
 
 If there is a new version of tiddlywiki available run `Setup.sh` again and it
 will ask if you wish to update tiddlywiki or not, press `1` for yes or `2` for
@@ -27,6 +28,9 @@ no.
 ## Using this
 
 ### Making a plugin
+
+''Note:'' Making a plugin also makes a wiki that includes the new plugin, so
+you can test the plugin without having to make anything new.
 
 ```
 ./MakePlugin.sh PluginName

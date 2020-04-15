@@ -8,17 +8,17 @@
 NAME="wiki"
 EDITION="empty"
 
-if [ $1 ]; then
+if [ "$1" ]; then
     NAME=$1
 fi
 
-if [ $2 ]; then
+if [ "$2" ]; then
     EDITION=$2
 fi
 
-node ./TiddlyWiki5/tiddlywiki.js $(pwd)/Wikis/$NAME --init $EDITION
+node ./TiddlyWiki5/tiddlywiki.js "$(pwd)/Wikis/$NAME" --init $EDITION
 
-if [ -f $(pwd)/Wikis/$NAME/tiddlywiki.info ]; then
+if [ -f "$(pwd)/Wikis/$NAME/tiddlywiki.info" ]; then
     echo "New wiki created in $(pwd)/Wikis/$Name using $EDITION edition"
 else
     echo "Error creating wiki. If you make a bug report please include all the output after you ran MakeWiki.sh"
