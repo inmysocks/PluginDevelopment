@@ -11,44 +11,44 @@ If you move your plugin development folder you must re-run this script.
 "
 
 if [ ! -f ./TiddlyWikiVersion.txt ]; then
-  echo "Checking out latest release of tiddlywiki5"
   cd TiddlyWiki5
   TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-  git checkout $TAG
   cd ..
-  echo "Finished checking out latest release"
   echo $TAG > ./TiddlyWikiVersion.txt
 fi
 
-#cd TiddlyWiki5
-#CURRENTTAG=$(<./TiddlyWikiVersion.txt)
-#NEWESTTAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-#if [ $CURRENTTAG != $NEWESTTAG ]; then
-#  echo "There may be a new version of tiddlywiki available, do you want to get
-#  it?"
-#  echo "Warning: If you have modified the core this will overwrite your
-#  changes!!!"
-#  echo "Do you wish to install this program?"
-#  select yn in "Yes" "No"; do
-#    case $yn in
-#      Yes ) UPDATE="yes"; break;;
-#      No ) UPDATE="no"; break;;
-#    esac
-#  done
-#  if [ $UPDATE ]; then
-#    cd TiddlyWiki5
-#    git reset --hard
-#    git pull
-#    TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-#    git checkout $TAG
-#    cd ..
-#  fi
-#fi
 
-echo "Patching tiddlywiki to work with this version of the plugin library
-creator."
+echo "Checking for newer versions of tiddlywiki"
+CURRENTTAG=$(<./TiddlyWikiVersion.txt)
+cd TiddlyWiki5
+NEWESTTAG=$(git ls-remote --tags | grep -o 'refs/tags/v[0-9]*\.[0-9]*\.[0-9]*' | sort -rV | head -n 1 | grep -o '[^\/]*$')
+cd ..
+if [ ! $CURRENTTAG == $NEWESTTAG ]; then
+  echo "You are using version $CURRENTTAG but $NEWESTTAG is available."
+  echo "Warning: If you have modified the core this will overwrite your
+  changes!!!"
+  echo "Do you wish to update to $NEWESTTAG? (enter 1 or 2 for yes or no)"
+  select yn in "Yes" "No"; do
+    case $yn in
+      Yes ) UPDATE="yes"; break;;
+      No ) UPDATE=""; break;;
+    esac
+  done
+  if [ $UPDATE ]; then
+    cd TiddlyWiki5
+    git reset --hard
+    git fetch --tags
+    git checkout $NEWESTTAG
+    cd ..
+    echo $NEWESTTAG > ./TiddlyWikiVersion.txt
+  fi
+else
+  echo "You have the newest version, $CURRENTTAG"
+fi
 
-./PatchMakeLibrary.sh
+#echo "Patching tiddlywiki to work with this version of the plugin library
+#creator."
+#./PatchMakeLibrary.sh
 
 echo "
 Enter the author name, this will be used as the author name for plugins you
