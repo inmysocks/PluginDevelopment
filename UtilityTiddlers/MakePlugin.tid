@@ -1,0 +1,71 @@
+title: Make Plugin
+
+\define plugintext()
+{
+"tiddlers": {<$list filter="[subfilter{$:/state/MakePlugin!!filter}]+[bl[]]">
+"{{{ [<currentTiddler>] +[jsonstringify[]] }}}": <$text text=<<jsontiddler>>/>,</$list><$list filter="[subfilter{$:/state/MakePlugin!!filter}]+[last[]]">
+"{{{ [<currentTiddler>] +[jsonstringify[]] }}}": <$text text=<<jsontiddler>>/></$list>
+}
+}
+\end
+
+Name:
+<$edit-text
+  tiddler='$:/state/MakePlugin'
+  field='name'
+  class='tc-edit-texteditor'
+  placeholder='Enter the plugin name here'
+  default=''
+/>
+Filter:
+<$edit-text
+  tiddler='$:/state/MakePlugin'
+  field='filter'
+  class='tc-edit-texteditor'
+  placeholder='Enter a filter to select tiddlers for the plugin'
+  default=''
+/>
+Description:
+<$edit-text
+  tiddler='$:/state/MakePlugin'
+  field='description'
+  class='tc-edit-texteditor'
+  placeholder='Enter a description for the plugin'
+  default=''
+/>
+List:
+<$edit-text
+  tiddler='$:/state/MakePlugin'
+  field='list'
+  class='tc-edit-texteditor'
+  placeholder='This is a list of items shown in tabs in the plugin info'
+  default=''
+/>
+Version:
+<$edit-text
+  tiddler='$:/state/MakePlugin'
+  field='version'
+  class='tc-edit-texteditor'
+  placeholder='Enter the plugin version'
+  default=''
+/>
+
+<$button>
+  Make Plugin
+  <$wikify
+    name=pluginText
+    text="<<plugintext>>"
+  >
+    <$action-setfield
+      $tiddler={{$:/state/MakePlugin!!name}}
+      text=<<pluginText>>
+      type='application/json'
+      description={{$:/state/MakePlugin!!description}}
+      core-version=">=5.0.0"
+      dependents=""
+      list={{$:/state/MakePlugin!!list}}
+      plugin-type="plugin"
+      version={{$:/state/MakePlugin!!version}}
+    />
+  </$wikify>
+</$button>
